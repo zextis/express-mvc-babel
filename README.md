@@ -36,14 +36,14 @@ Make sure you read the FAQ for more details and info.
 
 ```sh
 # Clone the project
-git clone git@github.com:vmasto/express-babel.git
-cd express-babel
+git clone git@github.com:zextis/express-mvc-babel
+cd express-mvc
 
 # Make it your own
 rm -rf .git && git init && npm init
 
 # Install dependencies
-npm install
+npm i
 
 # or if you're using Yarn
 yarn
