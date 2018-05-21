@@ -2,7 +2,7 @@
 
 Today I'm gonna teach you how to use Express MVC Architecture. The flow looks like this:
 
-```
+```sh
 ______ MVC FLOW ____________
 Model --> Controller --> View
 View --> Controller --> Model
@@ -71,7 +71,7 @@ var home = require('../app/controllers/home');
 var item = require('../app/controllers/items');
 ```
 
-Then you can assign routes to functions in the appropriate controller. So like in the items controller you have a `showItems` function that looks like: 
+Then you can assign routes to functions in the appropriate controller. So like in the items controller you have a `showItems` function that looks like:
 
 ```javascript
 //File: controllers/item.js
@@ -96,11 +96,11 @@ To get this function to work and pass the data to the view, in the routes we do 
 app.get('/items', item.showItems);
 ```
 
-So that when we go to `localhost:8042/items`, the `showItems` function will run, and `../views/item/test` (see `showItems` function) will be rendered. 
+So that when we go to `localhost:8042/items`, the `showItems` function will run, and `../views/item/test` (see `showItems` function) will be rendered.
 
-## Step 4: Is That Karen I See?
+## Step 4: Is That Karen I See
 
-No. That's just the web page. Why is this Step 4? 
+No. That's just the web page. Why is this Step 4?
 
 *Anyway*, just make a view file (`views/[yourfile].ejs`) and call it in your controller when you want to render something, like in the `showItems` function:
 

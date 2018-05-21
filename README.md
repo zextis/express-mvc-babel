@@ -36,8 +36,8 @@ Make sure you read the FAQ for more details and info.
 
 ```sh
 # Clone the project
-git clone git@github.com:zextis/express-mvc-babel
-cd express-mvc
+git clone https://github.com/zextis/express-mvc-babel.git
+cd express-mvc-babel
 
 # Make it your own
 rm -rf .git && git init && npm init
@@ -48,6 +48,7 @@ npm i
 # or if you're using Yarn
 yarn
 ```
+
 Then you can begin development:
 
 ```sh
@@ -99,13 +100,13 @@ npm run lint
 
 To begin linting and start the server simultaneously, edit the `package.json` like this:
 
-```
+```json
 "dev": "nodemon src/index.js --exec \"node -r dotenv/config -r babel-register\" | npm run lint"
 ```
 
 ### Environmental variables in development
 
-The project uses [dotenv](https://www.npmjs.com/package/dotenv) for setting environmental variables during development. Simply copy `.env.example`, rename it to `.env` and add your env vars as you see fit. 
+The project uses [dotenv](https://www.npmjs.com/package/dotenv) for setting environmental variables during development. Simply copy `.env.example`, rename it to `.env` and add your env vars as you see fit.
 
 It is **strongly** recommended **never** to check in your .env file to version control. It should only include environment-specific values such as database passwords or API keys used in development. Your production env variables should be different and be set differently depending on your hosting solution. `dotenv` is only for development.
 
@@ -121,7 +122,7 @@ yarn run build
 npm run build
 ```
 
-will compile your `src` into `/dist`, and 
+will compile your `src` into `/dist`, and
 
 ```sh
 # yarn
@@ -162,4 +163,5 @@ If you see anything that needs improvement feel free to open an issue for discus
 You can also find me on twitter at [@vmasto](https://twitter.com/vmasto).
 
 ## License
+
 MIT License. See the [LICENSE](LICENSE) file.
