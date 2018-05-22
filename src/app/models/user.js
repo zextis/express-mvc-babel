@@ -2,7 +2,7 @@
 //app/models/user.js
 //load the things we need
 var mongoose = require('mongoose');
-var bcrypt   = require('bcrypt');
+var bcrypt   = require('bcrypt-nodejs');
 
 //define the schema for our user model
 var userSchema = mongoose.Schema({	
@@ -15,7 +15,6 @@ var userSchema = mongoose.Schema({
 	active_hash: String,
 	role_id: { type: Number, default: 2 }
 });
-
 
 //methods ======================
 //generating a hash

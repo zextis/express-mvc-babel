@@ -1,7 +1,3 @@
-var numeral = require('numeral');
-var bcrypt = require('bcrypt');
-var dateFormat = require('dateformat');
-
 exports.loggedIn = (req, res, next) => {
   if (req.session.user) { // req.session.passport._id
     next();

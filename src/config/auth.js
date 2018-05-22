@@ -1,6 +1,6 @@
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../app/models/user');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 var dateFormat = require('dateformat');
 
 //expose this function to our app using module.exports
@@ -79,7 +79,6 @@ module.exports = function (passport) {
               newUser.updated_date = day;
               newUser.status = 'active'; //inactive for email actiavators
               newUser.active_hash = active_code;
-              newUser._id = userdata[0]._id + 1;
 
 
               // save the user
@@ -91,10 +90,10 @@ module.exports = function (passport) {
                   email.activate_email(req.body.username,req.body.email,active_code);
                                       return done(null, newUser,req.flash('success', 'Account Created Successfully,Please Check Your Email For Account Confirmation.'));
                   */
-                 req.session.destroy();
+
                 return done(null, newUser, req.flash('success', 'Account Created Successfully'));
 
-                
+                // req.session.destroy();
 
               });
 

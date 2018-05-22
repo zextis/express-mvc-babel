@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser';
 import flash from 'connect-flash';
-import cookieParser from 'cookie-parser';
+
 import express from 'express';
 import session from 'express-session';
 import mongoose from 'mongoose';
@@ -26,12 +26,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.use(cookieParser()); // read cookies (needed for auth)
+
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/bootstrap', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/')));
-
-//Passport Things
-require('./config/auth')(passport); // pass passport for configuration
 
 app.use(session({
   secret: 'wholoveskeylimepi3', //session secret
@@ -40,8 +37,16 @@ app.use(session({
 }));
 
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
+// app.use(passport.session()); // persistent login sessions
+
+app.use(session({ cookie: { maxAge: 60000 }, 
+  secret: 'nooot',
+  resave: false, 
+  saveUninitialized: false}));
+  app.use(flash()); // use connect-flash for flash messages stored in session
+  
+//Passport Things
+require('./config/auth')(passport); // pass passport for configuration
 
 // routes ======================================================================
 require('./config/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
